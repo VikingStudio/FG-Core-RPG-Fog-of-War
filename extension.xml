@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--	
+	Copyright (C) Styrmir, I take no liability in any negative effects the use of this extension may have on your system.
+	You are free to download and load this extension for use in your FG games, and access its API with your own extensions but modification and redistribution is prohibited.
+-->
+
+<root version="3.0" release="1">
+
+	<properties>
+		<name>Core RPG - Fog of War</name>
+		<version>0.1.0</version>
+		
+		<author>Styrmir</author>
+		<description>Core RPG - Fog of War</description>
+		
+		<ruleset>Any</ruleset>
+	</properties>
+    
+
+	<base>									
+		<script name="FOW" file="scripts/fow.lua" />
+	</base>		
+
+	<announcement text="Core RPG - Fog of War" font="emotefont" icon="icon" />	
+</root>

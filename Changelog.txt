@@ -1,0 +1,19 @@
+Changelog / Added / Modified:
+Versioning: v(Major.Minor.Patch) https://en.wikipedia.org/wiki/Software_versioning
+
+
+Fog of War considerations and plan:
+
+I have been looking into rudimentary dynamic lighting (which would no doubt take a number of weeks to finish if I were to push ahead). So something similar to what I found here while searching the forums: https://www.youtube.com/watch?v=Xj3FwXkJ_jU
+What I have so far is that I've figured out how to accomplish this in broad strokes, both from a what we have available to work with to the math involved. So I have a rough outline development pipeline for this and I've started writing code to accomplish this to some degree of success so far, including creating the additional graphics needed to work.
+There are current limitations to how dynamic lighting could be accomplished from what I've read and seen so far. For one as we don't have proper drawing tools we can call upon with APIs, nor API's to read the current mask. Also as has been noted in other posts, FG is a single-thread application, so overly complicated vector fog of war calculations might hang up all the clients as they are being done over the whole group as the software can only do one thing at a time.
+So what I've come down to, similar to what can be seen in the youtube video above. This could be handled by a hex by hex basis (rectangular only for now) using tokens (black, full square sized, of varying opacity) to represent areas of darkness and with some clever math extrapolated from the set grid sizes etc., to remove or replace the tokens depending on if on the GM or player side, and if vision is normal, dim or none etc. Hiding NPC's could be done similarly if outside of view, but that's something I'd worry about later if at all (it's as easy as a mouse click for the GM on the CT after all), focus on the primary functionality first, the 80/20 principle.
+
+My main concern with this at the moment and this approach, is no doubt one of the the technical difficulty limitations that youtube video code creator must have run into as well. Is that you can only do it on a hex by hex basis, that is if you have a map that doesn't have at least one hex between walls, then you're in a tough spot. And as we all know there are plenty of maps such as that out there, castles, houses and ruins come to mind.
+So I'm considering if there are other approaches I could take to this atm. Such as for example simulating a vector drawing tool by allowing the rotation and manipulation of a square token to extend out as a line across the map, then figuring out some math to calculating fog of war with that as a "wall" to vision. But then again we get back to the "single thread application" concern.
+
+
+v0.1.0 (March 11th, 2019)
+- Start to dynamic lighting/fog of war code. (fog of war on hold due to technical limitations, more details in scripts/fow.lua)     
+- Added Fog of War graphics. 9 new 300x300 black images, from 100%-10% opacity to graphics token folder to be uploaded onto host.
+- Created fow.lua [scripts/fow.lua]
